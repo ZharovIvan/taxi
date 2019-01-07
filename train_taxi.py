@@ -24,7 +24,7 @@ def grid(X, y):
 
 
 path = r"C:\Users\miair\PycharmProjects\untitled10\train.csv" #путь к файлу reviews_train.csv
-rows = 6000000
+rows = 5000000
 data_train = pd.read_csv(path, skip_blank_lines =True, nrows=rows) #чтение reviews_train.csv pickup_latitude
 data_train = data_train.dropna(axis=0)
 #Убираем лишние хначения
@@ -62,7 +62,7 @@ print('Кросс-валидация(1), подобор параметров(2),
 Choose_number = input()
 model = RandomForestRegressor(bootstrap= False, max_depth= 50, max_features= 'sqrt', min_samples_leaf= 2, min_samples_split= 5, n_estimators=600)
 
-'''
+
 if (Choose_number == '4'):
     # Тестирование
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=11)
@@ -70,8 +70,7 @@ if (Choose_number == '4'):
     predict_train = model.predict(X_train)
     predict_test = model.predict(X_test)
     print(sqrt(mean_squared_error(y_train, predict_train)), sqrt(mean_squared_error(y_test, predict_test)))
-'''
-if (Choose_number == '3'):
+elif (Choose_number == '3'):
     # Обучение и сохранение модели
     model.fit(X, y)
     predict_train = model.predict(X)
